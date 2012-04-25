@@ -20,7 +20,7 @@ class DataGetter
         	'callback' => $callback, 'priority' => $priority
     	);
         usort(self::$_callbacks[$getter], 'DataGetter::_sortCallbacks');
-        echo 'Added callback ' . $id . ' - Priority: ' . $priority . PHP_EOL;
+        //echo 'Added callback ' . $id . ' - Priority: ' . $priority . PHP_EOL;
     }
     
     static public function getData($getter)
@@ -29,8 +29,8 @@ class DataGetter
         array_shift($arguments);
         foreach (self::$_callbacks[$getter] as $callback) {
             $data = call_user_func_array($callback->callback, $arguments);
-            echo 'Call to ' . $callback->callback[1] . '. Data: '
-                . print_r($data, true) . PHP_EOL;
+            /*echo 'Call to ' . $callback->callback[1] . '. Data: '
+                . print_r($data, true) . PHP_EOL;*/
             if ($data !== false) {
                 return $data;
             } 
